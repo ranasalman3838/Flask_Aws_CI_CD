@@ -1,0 +1,22 @@
+# Base image
+FROM Python:3.10.11
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Coping the requirements file
+COPY requirements.txt .
+
+# Install the project dependencies
+RUN pip install -r requirements.txt
+
+# Copy the installation code into the container
+COPY . .
+
+# Expose the port the Flask application listioning on 
+EXPOSE 5000
+
+# Set envirement variables if necessory
+# ENV MY_ENV_VAR = val
+CMD [ "Python","app.py" ]
+# Run the Flask application 
